@@ -3,19 +3,24 @@ module.exports = {
 	getStates: function( ) {
 		return [
 			{
-				name: 'home',
-				url: '/',
-				component: 'homeComp'
+				name: 		'home',
+				url: 		'/',
+				component: 	'homeComp'
 			},
 			{
-				name: 'tree',
-				url: '/design',
-				component: 'treeComp',
+				name: 		'tree',
+				url:  		'/tree',
+				component: 	'treeComp',
 				resolve: {
-					nodes: function( APIService ) {
+					values: function( APIService ) {
 						return APIService.getNodes( );
 					}
 				}
+			},
+			{
+				name: 		'tree.newScenario',
+				url:  		'/new',
+				component: 	'newScenarioComp'
 			}
 		];
 	}

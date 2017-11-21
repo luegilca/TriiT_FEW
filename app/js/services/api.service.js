@@ -15,6 +15,10 @@ module.exports = function APIService( $http, $rootScope, $timeout, $state, backU
 				}, function error(response){
 					console.log(response);
 				})
+		},
+
+		postNodes: function( data ) {
+			return $http.post( backURL.url + 'nodes', data );
 		}
 	})
 }
