@@ -87,9 +87,9 @@ let app = angular.module('app', ['ui.router'])
             }
         }
 
-        root = scope.values[0];
+        root = scope.values;
         //values is the flare.json 
-        select2_data = extract_select2_data(scope.values[0], [], 0)[1];//I know, not the prettiest...
+        select2_data = extract_select2_data(scope.values, [], 0)[1];//I know, not the prettiest...
         root.x0 = height / 2;
         root.y0 = 0;
         console.log(root);
