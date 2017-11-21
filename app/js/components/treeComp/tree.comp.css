@@ -1,28 +1,38 @@
 .node {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .node circle {
   fill: #fff;
   stroke: steelblue;
-  stroke-width: 3px;
+  stroke-width: 1.5px;
+}
+
+.found {
+  fill: #ff4136;
+  stroke: #ff4136;
 }
 
 .node text {
-  font: 12px sans-serif;
+  font: 10px sans-serif;
 }
 
 .link {
   fill: none;
   stroke: #ccc;
-  stroke-width: 2px;
+  stroke-width: 1.5px;
+}
+/*Just to ensure the select2 box is "glued" to the top*/
+
+.search {
+  width: 100%;
 }
 
 .modal-header, h4, .close {
-      background-color: #5cb85c;
-      color:white !important;
-      text-align: center;
-      font-size: 30px;
+  background-color: #5cb85c;
+  color:white !important;
+  text-align: center;
+  font-size: 30px;
 }
 .modal-footer {
   background-color: #f9f9f9;
