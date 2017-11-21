@@ -1,0 +1,22 @@
+'use strict';
+module.exports = {
+	getStates: function( ) {
+		return [
+			{
+				name: 'home',
+				url: '/',
+				component: 'homeComp'
+			},
+			{
+				name: 'tree',
+				url: '/design',
+				component: 'treeComp',
+				resolve: {
+					nodes: function( APIService ) {
+						return APIService.getNodes( );
+					}
+				}
+			}
+		];
+	}
+}
