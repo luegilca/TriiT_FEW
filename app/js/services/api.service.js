@@ -31,6 +31,22 @@ module.exports = function APIService( $http, $rootScope, $timeout, $state, backU
 
 		getResults: function( ){
 			return $http.get( backURL.url + 'results');
+		},
+
+		startRoot: function( ){
+			var data = {
+				name: "¿Cuál es tu dilema?",
+				parent: null,
+				gain: null,
+				probability: null
+			}
+			$http.post( backURL.url + 'nodes', data)
+				.then( function success(response){
+					console.log(response.data);
+				}, function error(response){
+					console.log(response.data);
+				});
+
 		}
 	})
 }

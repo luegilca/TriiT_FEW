@@ -4,7 +4,9 @@ function HomeCompCtrl( $scope, $rootScope, APIService ){
 	let compCtrl = this;
 
 	angular.extend(compCtrl, {
-
+		$onInit: function( ){
+			APIService.startRoot();
+		}
 	});
 }
 

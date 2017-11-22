@@ -16,11 +16,6 @@ module.exports = {
 						return APIService.getNodes( );
 					}
 				}
-			},
-			{
-				name: 		'tree.newScenario',
-				url:  		'/new',
-				component: 	'newScenarioComp'
 			}
 		];
 	}
