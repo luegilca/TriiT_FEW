@@ -1,6 +1,6 @@
 'use strict';
 
-function TreeCompCtrl( $scope, APIService ){
+function TreeCompCtrl( $scope, $state, $stateParams, $timeout, APIService ){
 	let compCtrl = this;
 
 	angular.extend(compCtrl, {
@@ -9,9 +9,10 @@ function TreeCompCtrl( $scope, APIService ){
 
 		$onInit: function( ) {
 			compCtrl.newNode = {};
+			$('#myModal').modal('hide');
 		},
 
-		validateFields: function(){
+		validateFields: function() {
 			if( compCtrl.newNode.name == null ){
 				toastr.error('New scenario name can\'t be empty', 'Error');
 				return false;
@@ -23,17 +24,24 @@ function TreeCompCtrl( $scope, APIService ){
 			return true;
 		},
 
+		reload: function() {
+			$timeout(function(){
+				$state.go('tree', {}, {reload: true});
+			}, 200);			
+		},
+
 		postNode: function( ){
 			if( compCtrl.validateFields( ) ) {
 				compCtrl.newNode.parent = document.getElementById("parentId").value;
 				APIService.postNodes( compCtrl.newNode )
-					.then( function success(response){
-						toastr.success('New scenario added.', 'Success');
+					.then( function success(response){							
 						$('#myModal').modal('hide');
-						$route.reload();
+						toastr.success('New scenario added.', 'Success');
+						compCtrl.newNode = {};						
+						compCtrl.reload();
+						
 					}, function error(response){
-						console.log(response.data);
-						toastr.error('Can\'t create new scenario', 'Error');
+						toastr.error(response.data.Error, 'Can\'t create new scenario');
 					});
 			}			
 		}

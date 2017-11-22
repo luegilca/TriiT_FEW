@@ -43,6 +43,7 @@ app.directive("workHistory", function () {
 
         // Toggle children on click.
         function click(d) {
+            toastr.info(d.name + '\n' + d.probability, 'Nodo ' + d._id);
     		if (d.children) {
                 d._children = d.children;
                 d.children = null;
@@ -57,8 +58,8 @@ app.directive("workHistory", function () {
         function dblclick(n){
         	if(n.gain == '-Infinity'){
         		$('#myModal').modal();
-        		$('#parentName').val("Nodo: " + n.parent.id + " - " + n.parent.name);
-        		$('#parentId').val(n.parent.id);
+        		$('#parentName').val("Nodo: " + n._id + " - " + n.name);
+        		$('#parentId').val(n._id);
         	}
         }
 
@@ -77,10 +78,9 @@ app.directive("workHistory", function () {
 
         root = scope.values;
         //values is the flare.json 
-        select2_data = extract_select2_data(scope.values, [], 0)[1];//I know, not the prettiest...
+        select2_data = extract_select2_data(scope.values, [], 0)[0];//I know, not the prettiest...
         root.x0 = height / 2;
         root.y0 = 0;
-        console.log(root);
         root.children.forEach(collapse);
         update(root);
         //init search box
@@ -125,7 +125,7 @@ app.directive("workHistory", function () {
             .style("fill", function (d) { return d._children ? "lightsteelblue" : "#fff"; });
 
             nodeEnter.append("text")
-                .attr("x", function (d) { return d.children || d._children ? -10 : 10; })
+                .attr("x", function (d) { return d.children || d._children ? -20 : 20; })
                 .attr("dy", ".35em")
                 .attr("text-anchor", function (d) { return d.children || d._children ? "end" : "start"; })
                 .text(function (d) { return d.name; })
@@ -137,7 +137,7 @@ app.directive("workHistory", function () {
                 .attr("transform", function (d) { return "translate(" + d.y + "," + d.x + ")"; });
 
             nodeUpdate.select("circle")
-                .attr("r", 4.5)
+                .attr("r", 8)
                 .style("fill", function (d) {
                     if (d.class === "found") {
                         return "#ff4136"; //red
