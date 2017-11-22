@@ -43,15 +43,14 @@ app.directive("workHistory", function () {
 
         // Toggle children on click.
         function click(d) {
-    		    if (d.children) {
-                d._children = d.children;
-                d.children = null;
+          console.log(d);
+            if(d.children) {
+              d._children = d.children;
+              d.children = null;
             }
             else {
-                if(d._children == null)
-                  alert('nada');
-                d.children = d._children;
-                d._children = null;
+              d.children = d._children;
+              d._children = null;
             }
         	update(d);       
         }
@@ -62,16 +61,6 @@ app.directive("workHistory", function () {
         		$('#parentName').val("Nodo: " + n._id + " - " + n.name);
         		$('#parentId').val(n._id);
         	}
-        }
-
-        function handleMouseOver(d, i) {  // Add interactivity
-          // Use D3 to select element, change color and size
-          $('#infoModal').modal();
-        }
-
-        function handleMouseOut(d, i) {  // Add interactivity
-          // Use D3 to select element, change color and size
-          $('#infoModal').modal('hide');
         }
 
         function openPaths(paths) {

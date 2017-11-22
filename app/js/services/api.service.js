@@ -19,6 +19,14 @@ module.exports = function APIService( $http, $rootScope, $timeout, $state, backU
 
 		postNodes: function( data ) {
 			return $http.post( backURL.url + 'nodes', data );
+		},
+
+		deleteNode: function( id ) {
+			return $http.delete( backURL.url + "nodes/" + id );
+		},
+
+		candidates: function( ){
+			return $http.get( backURL.url + 'can');
 		}
 	})
 }

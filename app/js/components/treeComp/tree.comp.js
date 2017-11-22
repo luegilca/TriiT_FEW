@@ -6,6 +6,8 @@ function TreeCompCtrl( $scope, $state, $stateParams, $timeout, APIService ){
 	angular.extend(compCtrl, {
 		values: APIService.values,
 		newNode: null,
+		deleteCandidates: null,
+		deleted: null,
 
 		$onInit: function( ) {
 			compCtrl.newNode = {};
@@ -43,7 +45,50 @@ function TreeCompCtrl( $scope, $state, $stateParams, $timeout, APIService ){
 						toastr.error(response.data.Error, 'Can\'t create new scenario');
 					});
 			}			
+		},
+
+		deleteNode: function( ){
+			if( compCtrl.deleted == null ){
+				toastr.error('You must select one of the scenarios', 'Error');
+			}
+			else if( !compCtrl.deleteCandidates.includes(parseInt(compCtrl.deleted))) {
+				toastr.error( compCtrl.deleted + ' is not a delete candidate', 'Error');
+			}
+			else {
+				APIService.deleteNode(compCtrl.deleted)
+				.then( function success(response){
+					$('#infoModal').modal('hide');
+					toastr.success('Scenario deleted', 'Success');
+					compCtrl.reload();
+				}, function error(response){
+					toastr.error(response.data.Error, 'Can\'t delete scenario');
+				});
+			}			
+		},
+
+		seeResults: function( ){
+			alert('aaaaaa');
+			$("#search").select2("val", "0");
+			// APIService.getResults( )
+			// 	.then( function success(response){
+
+			// 	}, function error(response){
+
+			// 	});
+		},
+
+		candidates: function( ){
+			APIService.candidates( )
+				.then( function success(response){
+					compCtrl.deleteCandidates = response.data.nodes;
+				}, function error(response){
+					toastr.error('Can\'t get the scenario candidates to delete.', 'Error');
+					console.log(response.data);
+				});
+			$('#infoModal').modal('show');
+			compCtrl.deleted = null;
 		}
+
 	});
 }
 
