@@ -61,6 +61,19 @@ app.directive("workHistory", function () {
         		$('#parentName').val("Nodo: " + n._id + " - " + n.name);
         		$('#parentId').val(n._id);
         	}
+          toastr.info("<strong>Scenario name:</strong> " + n.name + "<br>" 
+                  + "<strong>Scenario gain:</strong> " + n.gain + "<br>" 
+                  + "<strong>Scenario probability:</strong> " + n.probability + "<br>"
+                  + "<strong>Scenario parent ID:</strong> " + n.parent._id,
+                  'Information, Scenario ID# ' + n._id);
+        }
+
+        function handlemouseover(d,i){
+          toastr.info("<strong>Scenario name:</strong> " + d.name + "<br>" 
+                    + "<strong>Scenario gain:</strong> " + d.gain + "<br>" 
+                    + "<strong>Scenario probability:</strong> " + d.probability + "<br>"
+                    + "<strong>Scenario parent ID:</strong> " + d.parent._id,
+                    'Information, Scenario ID# ' + d._id);
         }
 
         function openPaths(paths) {
@@ -119,6 +132,7 @@ app.directive("workHistory", function () {
             .attr("transform", function (d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })            
             .on("dblclick", dblclick)
             .on("click", click);
+            //.on("mouseover", handlemouseover);
 
             nodeEnter.append("circle")
             .attr("r", 1e-6)

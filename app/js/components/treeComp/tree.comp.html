@@ -1,8 +1,8 @@
-<div id="search"></div>
+<div id="search" width="100px"></div>
 <button type="button" class="btn btn-danger btn-md" ng-click="$ctrl.candidates()">
 	Delete node
 </button>
-<button type="button" class="btn btn-info btn-md" ng-click="$ctrl.seeResults()">
+<button type="button" class="btn btn-info btn-md" ng-click="$ctrl.getResults()">
 	See results
 </button>
 <work-history values="$ctrl.values"></work-history>
@@ -69,3 +69,22 @@
     </div>    
   </div>
 </div>
+
+<!-- Modal -->
+  <div class="modal fade" id="resultModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Results</h4>
+        </div>
+        <div class="modal-body">
+          <strong><i>{{$ctrl.results}}</i></strong><br><br>
+          <p>Ahora seleccione la ruta que le fue indicada, buscándola en el seleccionador de la izquierda</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -8,10 +8,14 @@ function TreeCompCtrl( $scope, $state, $stateParams, $timeout, APIService ){
 		newNode: null,
 		deleteCandidates: null,
 		deleted: null,
+		results: null,
 
 		$onInit: function( ) {
 			compCtrl.newNode = {};
 			$('#myModal').modal('hide');
+			$('#infoModal').modal('hide');
+			$('#resultModal').modal('hide');
+
 		},
 
 		validateFields: function() {
@@ -66,15 +70,15 @@ function TreeCompCtrl( $scope, $state, $stateParams, $timeout, APIService ){
 			}			
 		},
 
-		seeResults: function( ){
-			alert('aaaaaa');
-			$("#search").select2("val", "0");
-			// APIService.getResults( )
-			// 	.then( function success(response){
-
-			// 	}, function error(response){
-
-			// 	});
+		getResults: function( ){
+			$('#resultModal').modal('show');
+			APIService.getResults( )
+				.then( function success(response){
+					compCtrl.results = response.data.Option;
+				}, function error(response){
+					toastr.error(response.data, 'Error');
+					console.log(response.data);
+				});
 		},
 
 		candidates: function( ){

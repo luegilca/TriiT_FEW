@@ -27,6 +27,10 @@ module.exports = function APIService( $http, $rootScope, $timeout, $state, backU
 
 		candidates: function( ){
 			return $http.get( backURL.url + 'can');
+		},
+
+		getResults: function( ){
+			return $http.get( backURL.url + 'results');
 		}
 	})
 }
