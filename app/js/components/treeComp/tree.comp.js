@@ -71,12 +71,12 @@ function TreeCompCtrl( $scope, $state, $stateParams, $timeout, APIService ){
 		},
 
 		getResults: function( ){
-			$('#resultModal').modal('show');
 			APIService.getResults( )
 				.then( function success(response){
 					compCtrl.results = response.data.Option;
+					$('#resultModal').modal('show');
 				}, function error(response){
-					toastr.error(response.data, 'Error');
+					toastr.error(response.data.Error, 'Error');
 					console.log(response.data);
 				});
 		},
