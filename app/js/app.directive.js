@@ -4,8 +4,7 @@ app.directive("workHistory", function () {
 	return {
       restrict: 'E',
       scope: {
-      	values: '=',
-      	controller: '='
+      	values: '='
       },
 
       link: function link(scope, el, attr) {
@@ -20,6 +19,7 @@ app.directive("workHistory", function () {
             height = 800 - margin.top - margin.bottom;
         var i = 0,duration = 750,root,select2_data;
         var diameter = 960;
+        var radius = 8;
         var tree = d3.layout.tree()
             .size([height, width]);
 
@@ -43,12 +43,13 @@ app.directive("workHistory", function () {
 
         // Toggle children on click.
         function click(d) {
-            toastr.info(d.name + '\n' + d.probability, 'Nodo ' + d._id);
-    		if (d.children) {
+    		    if (d.children) {
                 d._children = d.children;
                 d.children = null;
             }
             else {
+                if(d._children == null)
+                  alert('nada');
                 d.children = d._children;
                 d._children = null;
             }
@@ -56,11 +57,21 @@ app.directive("workHistory", function () {
         }
 
         function dblclick(n){
-        	if(n.gain == '-Infinity'){
+        	if(n.gain == '-Infinity') {
         		$('#myModal').modal();
         		$('#parentName').val("Nodo: " + n._id + " - " + n.name);
         		$('#parentId').val(n._id);
         	}
+        }
+
+        function handleMouseOver(d, i) {  // Add interactivity
+          // Use D3 to select element, change color and size
+          $('#infoModal').modal();
+        }
+
+        function handleMouseOut(d, i) {  // Add interactivity
+          // Use D3 to select element, change color and size
+          $('#infoModal').modal('hide');
         }
 
         function openPaths(paths) {
@@ -78,7 +89,7 @@ app.directive("workHistory", function () {
 
         root = scope.values;
         //values is the flare.json 
-        select2_data = extract_select2_data(scope.values, [], 0)[0];//I know, not the prettiest...
+        select2_data = extract_select2_data(scope.values, [], 0)[1];//I know, not the prettiest...
         root.x0 = height / 2;
         root.y0 = 0;
         root.children.forEach(collapse);
@@ -137,7 +148,7 @@ app.directive("workHistory", function () {
                 .attr("transform", function (d) { return "translate(" + d.y + "," + d.x + ")"; });
 
             nodeUpdate.select("circle")
-                .attr("r", 8)
+                .attr("r", radius)
                 .style("fill", function (d) {
                     if (d.class === "found") {
                         return "#ff4136"; //red

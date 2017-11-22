@@ -38,8 +38,7 @@ function TreeCompCtrl( $scope, $state, $stateParams, $timeout, APIService ){
 						$('#myModal').modal('hide');
 						toastr.success('New scenario added.', 'Success');
 						compCtrl.newNode = {};						
-						compCtrl.reload();
-						
+						compCtrl.reload();						
 					}, function error(response){
 						toastr.error(response.data.Error, 'Can\'t create new scenario');
 					});
