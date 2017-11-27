@@ -74,6 +74,7 @@ function TreeCompCtrl( $scope, $state, $stateParams, $timeout, APIService ){
 			APIService.getResults( )
 				.then( function success(response){
 					compCtrl.results = response.data.Option;
+					compCtrl.results += " with an expected profit of: " + response.data.Gain; 
 					$('#resultModal').modal('show');
 				}, function error(response){
 					toastr.error(response.data.Error, 'Error');
