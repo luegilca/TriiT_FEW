@@ -1,0 +1,84 @@
+.app-content {
+  border-radius: 10% !important;
+  border-color: black;
+}
+
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.found {
+  fill: #ff4136;
+  stroke: #ff4136;
+}
+
+.node {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+/*Just to ensure the select2 box is "glued" to the top*/
+
+.search {
+  width: 60%;
+}
+
+#application {
+  padding: 0px; 
+  margin-left: 7%;
+}
+
+#myModal {
+  font-size: 15px;
+}
+
+#myModal .modal-header, h6{
+  background-color: #fed136;
+  color: black !important;
+  text-align: center;
+  font-size: 30px;
+}
+
+#resultModal {
+  font-size: 15px;
+}
+
+#resultModal .modal-header, h6{
+  background-color: #fed136;
+  color: black !important;
+  text-align: center;
+  font-size: 30px;
+}
+
+.modal-header-danger, .close {
+  background-color: #d9534f;
+  color:white !important;
+  text-align: center;
+  font-size: 30px;
+}
+
+.modal-footer-content, #header{
+  background-color: #f9f9f9;
+}
+
+#cancelButton {
+  background-color: black;
+}
+
+#add {
+  background-color: #fed136;
+}
+
+.form-group {
+  text-align: left;
+}

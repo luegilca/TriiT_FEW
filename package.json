@@ -1,0 +1,34 @@
+{
+  "name": "triit_few",
+  "version": "1.0.0",
+  "description": "FontEnd app for stochastical models project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -a 127.0.0.1 -p 8080 -c-1",
+    "watch": "watchify -t browserify-css ./app/js/app.js -o ./app/js/dist/app.bundle.js -d -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luegilca/TriiT_FEW.git"
+  },
+  "keywords": [
+    "decision",
+    "tree",
+    "angularjs",
+    "frontend"
+  ],
+  "author": "Luis Ernesto Gil Castellanos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luegilca/TriiT_FEW/issues"
+  },
+  "homepage": "https://github.com/luegilca/TriiT_FEW#readme",
+  "devDependencies": {
+    "@uirouter/angularjs": "^1.0.11",
+    "angular": "^1.6.6",
+    "browserify-css": "^0.13.1",
+    "http-server": "^0.10.0",
+    "watchify": "^3.9.0"
+  }
+}

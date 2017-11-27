@@ -1,0 +1,93 @@
+<div id="search" width="10%"></div>
+<button type="button" class="btn btn-danger btn-md" ng-click="$ctrl.candidates()">
+	Delete node
+</button>
+<button type="button" class="btn btn-warning btn-md" ng-click="$ctrl.clearTree()">
+	Clear tree
+</button>
+<button type="button" class="btn btn-info btn-md" ng-click="$ctrl.getResults()">
+	See results
+</button>
+<work-history values="$ctrl.values"></work-history>
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div id="header" class="modal-header" style="padding:35px 50px;">
+        <h6>New scenario</h6>
+        <button type="button" class="close" data-dismiss="modal">&times;</button><br>
+      </div>
+      <div class="modal-body" style="padding:40px 50px;">
+        <form role="form">
+          <div class="form-group">
+            <label for="name"><span class="glyphicon glyphicon-tag"></span> Scenario name: </label>
+            <input type="text" class="form-control" id="name" placeholder="Your scenario name goes here." ng-model="$ctrl.newNode.name">
+          </div>
+          <div class="form-group">
+            <label for="probability"><span class="glyphicon glyphicon-screenshot"></span> Probability to here: </label>
+            <input type="text" class="form-control" id="probability" placeholder="If you have the probability, type it here (values from 0 to 100)" ng-model="$ctrl.newNode.probability">
+          </div>
+          <div class="form-group">
+            <label for="gain"><span class="glyphicon glyphicon-screenshot"></span> Gain:</label>
+            <input type="text" class="form-control" id="gain" placeholder="Your gain goes here." ng-model="$ctrl.newNode.gain">
+          </div>
+          <div class="form-group">
+            <label for="parent"><span class="glyphicon glyphicon-circle-arrow-up"></span> Parent Name:</label>
+            <input type="text" class="form-control" id="parentName" disabled="true">
+          </div>
+          <div class="form-group">
+            <label for="parent"><span class="glyphicon glyphicon-sunglasses"></span> Parent ID:</label>
+            <input type="text" class="form-control" id="parentId" disabled="true"/>
+          </div>
+            <button id="add" type="submit" class="btn btn-block" ng-click="$ctrl.postNode()"><span class="glyphicon glyphicon-plus"></span> Add Scenario</button>
+        </form>
+      </div>
+      <div class="modal-footer modal-footer-content">
+        <button type="submit" id="cancelButton" class="btn btn-info pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+      </div>
+    </div>    
+  </div>
+</div>
+
+<div class="modal fade" id="infoModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header-danger content" style="padding:35px 50px;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Wait!</h4>
+      </div>
+      <div class="modal-body" style="padding:40px 50px;">
+        <form role="form">
+          <div class="form-group">
+            <label for="deleted">Scenarios available to delete {{$ctrl.deleteCandidates}}</label>
+            <input type="text" class="form-control" id="deleted" name="deleted" placeholder="Your scenario id goes here." ng-model="$ctrl.deleted">
+          </div>
+        </form>
+        <p>You are about to delete scenario: {{$ctrl.deleted}}</p><br><p>¿Are you sure?</p><br>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal" ng-click="$ctrl.deleteNode()"><span class="glyphicon glyphicon-remove"></span> Delete</button>
+	    	<button type="submit" class="btn btn-info btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span> Close</button>
+      </div>
+    </div>    
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="resultModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div id="header" class="modal-header" style="padding:35px 50px;">
+        <h6>New scenario</h6>
+        <button type="button" class="close" data-dismiss="modal">&times;</button><br>
+      </div>
+      <div class="modal-body" style="padding:40px 50px;">
+          <strong><i>{{$ctrl.results}}</i></strong><br><br>
+          <p>Now you can select the path to the answer above, look for it on the dropdown located on the left of this page.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" id="cancelButton" class="btn btn-info pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
