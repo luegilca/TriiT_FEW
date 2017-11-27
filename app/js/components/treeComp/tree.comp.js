@@ -91,6 +91,18 @@ function TreeCompCtrl( $scope, $state, $stateParams, $timeout, APIService ){
 				});
 			$('#infoModal').modal('show');
 			compCtrl.deleted = null;
+		},
+
+		clearTree: function( ) {
+			APIService.clearTree( )
+				.then( function success(response){
+					toastr.info('The tre is now empty', 'Success');
+					APIService.startRoot();
+					compCtrl.reload();
+				}, function error(response){
+					toastr.error('Can\'t clar the tre.', 'Error');
+					console.log(response.data);
+				})
 		}
 
 	});

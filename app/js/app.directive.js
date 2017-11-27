@@ -18,7 +18,6 @@ app.directive("workHistory", function () {
             width = 960 - margin.right - margin.left,
             height = 800 - margin.top - margin.bottom;
         var i = 0,duration = 750,root,select2_data;
-        var diameter = 960;
         var radius = 8;
         var tree = d3.layout.tree()
             .size([height, width]);

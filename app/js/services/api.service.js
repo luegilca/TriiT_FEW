@@ -47,6 +47,10 @@ module.exports = function APIService( $http, $rootScope, $timeout, $state, backU
 					console.log(response.data);
 				});
 
+		},
+
+		clearTree: function( ) {
+			return $http.get( backURL.url + 'clear');
 		}
 	})
 }

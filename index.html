@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-<html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=2.5, user-scalable=no" charset="utf-8">	
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>
 
@@ -108,11 +106,16 @@
       </div>
     </section>
 
-    <div id="application">
-    	<div class="container" align="center" ng-app="app">
-    		<ui-view></ui-view>    	    		
-    	</div>
-    </div>
+    <section id="application">
+      <div id="application" align="center" class="border border-dark" style="width: 80%;">
+        <br><br>
+        <div class="container" align="center" ng-app="app">
+          <ui-view></ui-view>             
+        </div>
+        <br><br>
+      </div>      
+    </section>
+    
 
     <!-- About -->
     <section id="about">
@@ -629,9 +632,9 @@
     <script src="js/agency.min.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.js"></script>
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
-	<script type="text/javascript" src="./app/js/dist/app.bundle.js"></script>
+  	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.js"></script>
+  	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+  	<script type="text/javascript" src="./app/js/dist/app.bundle.js"></script>
 
   </body>
 

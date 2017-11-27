@@ -1,6 +1,9 @@
-<div id="search" width="100px"></div>
+<div id="search" width="10%"></div>
 <button type="button" class="btn btn-danger btn-md" ng-click="$ctrl.candidates()">
 	Delete node
+</button>
+<button type="button" class="btn btn-warning btn-md" ng-click="$ctrl.clearTree()">
+	Clear tree
 </button>
 <button type="button" class="btn btn-info btn-md" ng-click="$ctrl.getResults()">
 	See results
@@ -10,9 +13,9 @@
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header content" style="padding:35px 50px;">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4>New scenario</h4>
+      <div id="header" class="modal-header" style="padding:35px 50px;">
+        <h6>New scenario</h6>
+        <button type="button" class="close" data-dismiss="modal">&times;</button><br>
       </div>
       <div class="modal-body" style="padding:40px 50px;">
         <form role="form">
@@ -36,11 +39,11 @@
             <label for="parent"><span class="glyphicon glyphicon-sunglasses"></span> Parent ID:</label>
             <input type="text" class="form-control" id="parentId" disabled="true"/>
           </div>
-            <button id="add" type="submit" class="btn btn-success btn-block" ng-click="$ctrl.postNode()"><span class="glyphicon glyphicon-plus"></span> Add Scenario</button>
+            <button id="add" type="submit" class="btn btn-block" ng-click="$ctrl.postNode()"><span class="glyphicon glyphicon-plus"></span> Add Scenario</button>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-info btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+      <div class="modal-footer modal-footer-content">
+        <button type="submit" id="cancelButton" class="btn btn-info pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
       </div>
     </div>    
   </div>
@@ -71,19 +74,19 @@
 </div>
 
 <!-- Modal -->
-  <div class="modal fade" id="resultModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header content">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Results</h4>
-        </div>
-        <div class="modal-body">
+<div class="modal fade" id="resultModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div id="header" class="modal-header" style="padding:35px 50px;">
+        <h6>New scenario</h6>
+        <button type="button" class="close" data-dismiss="modal">&times;</button><br>
+      </div>
+      <div class="modal-body" style="padding:40px 50px;">
           <strong><i>{{$ctrl.results}}</i></strong><br><br>
           <p>Now you can select the path to the answer above, look for it on the dropdown located on the left of this page.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" id="cancelButton" class="btn btn-info pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Close</button>
         </div>
       </div>
     </div>
